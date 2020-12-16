@@ -1,24 +1,35 @@
-# README
+# ラーメンShare
+ラーメン投稿サイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+自分の好みのラーメン、ラーメン屋を投稿できるサイト
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+好きなラーメン、ラーメン屋をシェアしよう！！
 
-* System dependencies
+### テーマを選んだ理由
+私はラーメンが好きで、よく友人などに教えるなどしていたのですが、一々口頭で伝えるなどした際煩雑だなと思うことが多々ありました。
+また、自分自身おすすめのラーメン屋さんについて一箇所にまとめられることができ、それをシェアすることができれば良いと思いましたので、今回の制作に至りました。
 
-* Configuration
+### ターゲットユーザ
+- ラーメンを好きな人
+- 好きなラーメンをシェアしたい人
+- ラーメン屋
 
-* Database creation
+### 主な利用シーン
+- お気に入りのラーメン、ラーメン屋についての情報を投稿し共有する際に活用。
+- 他の投稿者のラーメン情報を閲覧したい際に活用。
 
-* Database initialization
+## 開発環境
+- HTML&CSS
+- Ruby
+- Javascript
+- フレームワーク
+- Ruby on rails (5.2.4)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### イメージしているサイト
+https://ramen.walkerplus.com/
 
-* Deployment instructions
-
-* ...
+### チャレンジ機能一覧
