@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :noodles, dependent: :destroy
+
+    # 空で投稿できないようにする
+    validates :username, presence: true
 end

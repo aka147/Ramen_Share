@@ -17,22 +17,31 @@ class NoodlesController < ApplicationController
   def create
     # データを新規登録するためのインスタンス作成
     @noodle = Noodle.new(noodle_params)
-    #　誰が投稿したか
+    #誰が投稿したか
     @noodle.user_id = current_user.id
     # データをデータベースに保存するためのsaveメソッド実行
-    @noodle.save
+    if  @noodle.save
     #  トップ画面へリダイレクト
-    redirect_to noodle_path(@noodle)
+    redirect_to noodle_path(@noodle), notice: "投稿に成功しました。"
+    else
+      render :new
+    end
   end
 
   def edit
     @noodle = Noodle.find(params[:id])
+    if @noodle.user != current_user
+      redirect_to noodle_path, alert: "不正なアクセスです。"
+    end
   end
 
   def update
     @noodle = Noodle.find(params[:id])
-    @noodle.update(noodle_params)
-    redirect_to noodle_path(@noodle)
+    if @noodle.update(noodle_params)
+    redirect_to noodle_path(@noodle),notice: "更新に成功しました。"
+    else
+      render :edit
+    end
   end
 
 

@@ -8,6 +8,18 @@
   </div>
 </section>
 
+<% if @noodle.errors.any? %>
+<div class="notification is-danger">
+  <!--pluralizeは英語の単数形や複数形を判定してくれるもの-->
+  <h2><%= pluralize(@noodle.errors.count, "error") %>prohibited this object from being saved: not successfully</h2>
+  <ul>
+    <% @noodle.errors.full_messages.each do |message|%>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
