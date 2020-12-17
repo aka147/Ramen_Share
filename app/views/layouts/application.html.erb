@@ -21,9 +21,9 @@
       </div>
     <% end %>
 
-    
 
-    
+
+
     <nav class="navbar is-warning">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
@@ -35,16 +35,24 @@
           <span></span>
         </div>
       </div>
-    
-    <% if user_signed_in? %>    
+
+    <% if user_signed_in? %>
       <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-item">
-        </div>
+            <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+        <div class="navbar-item">
+            <%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-warning is-light" %>
+          </div>
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
                   <%= link_to "投稿者一覧", users_path, class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                  
                 </p>
                 <p class="control">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
@@ -55,12 +63,16 @@
       </div>
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-item">
+            <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-warning is-light" %>
+            </div>
+          <div class="navbar-item">
+            <%= link_to "投稿者一覧", users_path, class: "navbar-item button is-warning is-light" %>
+            </div>
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
-                <p class="control">
-                  <%= link_to "投稿者一覧", users_path, class: "button is-warning is-light" %>
-                </p>
+
                 <p class="control">
                   <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
                 </p>
@@ -72,7 +84,7 @@
           </div>
         </div>
       <% end %>
-      
+
     </nav>
     <%= yield %>
   </body>

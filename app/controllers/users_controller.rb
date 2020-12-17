@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # デバイスに入っているヘルパーメソッド。ログインしていない人のアクションへのアクセスを制限する。 [indexだけ許可という意味！]
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @users = User.all
   end
