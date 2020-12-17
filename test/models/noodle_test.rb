@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RamanTest < ActiveSupport::TestCase
+class NoodleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
