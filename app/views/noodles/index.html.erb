@@ -1,16 +1,3 @@
-<section class="hero is-success">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-      ラーメン一覧
-      </h1>
-    </div>
-  </div>
-</section>
-
-
-
-
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
@@ -35,8 +22,24 @@
                   </figure>
                 </div>
                 <div class="media-content">
-                  <div class="title"><%=link_to noodle.user.username, user_path(noodle.user) %>
+                  <div class="title">
+                    <%=link_to noodle.user.username, user_path(noodle.user) %>
                   </div>
+                </div>
+                <div class="media-right">
+                  <div class="title">
+                    <% if current_user.already_favorited?(noodle) %>
+                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% else %>
+                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                  <% end %>
+                </div>
                 </div>
               </div>
               <div class="content">

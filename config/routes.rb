@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   # scope module: :users do
     get '/users/:id/withdraw' => 'users#withdraw', as: 'user_withdraw'
   # end
-  resources :noodles
+  resources :noodles do
+    resource :favorites, only: [:create, :destroy]
+  end
+
 end

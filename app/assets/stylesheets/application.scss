@@ -31,3 +31,10 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+
+body {
+  min-height: 100vh;
+  color: white;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  font-family: sans-serif;
+}

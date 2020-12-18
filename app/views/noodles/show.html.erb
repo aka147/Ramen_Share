@@ -1,14 +1,3 @@
-<section class="hero is-success">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        ラーメン屋
-      </h1>
-    </div>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -23,6 +12,21 @@
             <div class="media">
               <div class="media-content">
                 <p class="title is-4"><%= @noodle.title %></p>
+              </div>
+              <div class="media-right">
+                <p class="title is-4">
+              <% if current_user.already_favorited?(@noodle) %>
+            <%= link_to noodle_favorites_path(@noodle), method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+            <%= @noodle.favorites.count %>
+          <% else %>
+            <%= link_to noodle_favorites_path(@noodle), method: :post do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+            <%= @noodle.favorites.count %>　
+          <% end %>
+          </p>
               </div>
             </div>
             <div class="content">

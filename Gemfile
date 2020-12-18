@@ -71,3 +71,5 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+# ajax導入のため
+gem 'jquery-rails'
