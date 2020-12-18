@@ -1,8 +1,16 @@
+  <div class="hero-body">
+    <div class="container">
+      <h4 class="title">
+        noodles.index
+      </h4>
+    </div>
+  </div>
+
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
       <% @noodles.each do |noodle| %>
-        <div class="column is-4">
+        <div class="column is-6">
           <div class="card">
             <div class="card-image">
             <figure class="image is-4by3">
@@ -42,6 +50,27 @@
                 </div>
                 </div>
               </div>
+
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <%= noodle.title %>
+                      </p>
+                    </header>
+                    <div class="star-rating-front" style="width: %">
+                      ★★★★★
+                    </div>
+                    <div class="star-rating-back">
+                      ★★★★★
+                    </div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                  </div>
+                </div>
+              </div>
+  
               <div class="content">
                 <time>
                   <%= noodle.updated_at.strftime("%Y-%m-%d %H:%M") %>

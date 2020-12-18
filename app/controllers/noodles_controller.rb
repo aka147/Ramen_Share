@@ -4,6 +4,7 @@ class NoodlesController < ApplicationController
 
   def index
     @noodles = Noodle.all
+
   end
 
   def show
