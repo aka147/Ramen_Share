@@ -1,6 +1,6 @@
 class NoodlesController < ApplicationController
   # デバイスに入っているヘルパーメソッド。ログインしていない人のアクションへのアクセスを制限する。 [indexだけ許可という意味！]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index], only: [:show]
 
   def index
     @noodles = Noodle.all

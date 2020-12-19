@@ -46,7 +46,7 @@
                         <%= @noodle.title %>
                       </p>
                     </header>
-                    <div class="star-rating-front" style="width: %">
+                    <div class="star-rating-front" style="width: <%= @noodle.review_score_percentage %> %">
                       ★★★★★
                     </div>
                     <div class="star-rating-back">
@@ -54,6 +54,7 @@
                     </div>
                   </div>
                   <div class="average-score-display ml-3 pt-2">
+                    <%= @noodle.avg_score %>点（<%= @noodle.reviews.count %>件のレビュー）
                   </div>
                 </div>
               </div>

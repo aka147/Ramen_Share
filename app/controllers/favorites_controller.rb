@@ -10,6 +10,7 @@ class FavoritesController < ApplicationController
     @noodle = Noodle.find(params[:noodle_id])
     # カレントユーザーにユーザーidが入っていて、noodle_idにヌードル_idが入っている
     @favorite = current_user.favorites.find_by(noodle_id: @noodle.id)
+    @favorite.destroy
     redirect_back(fallback_location: root_path)
   end
 end
