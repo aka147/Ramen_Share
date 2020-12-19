@@ -21,22 +21,43 @@
               <div class="media-content">
                 <p class="title is-4"><%= @noodle.title %></p>
               </div>
-              <div class="media-right">
-                <p class="title is-4">
-              <% if current_user.already_favorited?(@noodle) %>
-            <%= link_to noodle_favorites_path(@noodle), method: :delete do %>
-              <i class="fas fa-heart"></i>
-            <% end %>
-            <%= @noodle.favorites.count %>
-          <% else %>
-            <%= link_to noodle_favorites_path(@noodle), method: :post do %>
-              <i class="far fa-heart"></i>
-            <% end %>
-            <%= @noodle.favorites.count %>　
-          <% end %>
-          </p>
+                <div class="media-right">
+                  <p class="title is-4">
+                    <% if current_user.already_favorited?(@noodle) %>
+                    <%= link_to noodle_favorites_path(@noodle), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                      <% end %>
+                      <%= @noodle.favorites.count %>
+                      <% else %>
+                      <%= link_to noodle_favorites_path(@noodle), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= @noodle.favorites.count %>
+                  <% end %>
+                </p>
+                </div>
               </div>
-            </div>
+
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <%= @noodle.title %>
+                      </p>
+                    </header>
+                    <div class="star-rating-front" style="width: %">
+                      ★★★★★
+                    </div>
+                    <div class="star-rating-back">
+                      ★★★★★
+                    </div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                  </div>
+                </div>
+              </div>
+
             <div class="content">
               <table class="table is-narrow">
                 <tr>
@@ -73,6 +94,7 @@
           <%= @noodle.user.username %> さんのページへ
           <% end %>
         </article>
+        <%= render 'reviews/form', review: @review, noodle: @noodle %>
       </div>
     </div>
   </div>

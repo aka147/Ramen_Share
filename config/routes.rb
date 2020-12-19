@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-
+# rails routes | grep user でuserが入っているルーティングだけ呼び出せる
   devise_for :users
   root to: "home#index"
   resources :users
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   # end
   resources :noodles do
     resource :favorites, only: [:create, :destroy]
+    resource :reviews, only: [:index, :create,]
   end
 
 end

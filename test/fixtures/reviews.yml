@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  noodle: one
+  content: MyString
+  score: 1
+
+two:
+  user: two
+  noodle: two
+  content: MyString
+  score: 1
