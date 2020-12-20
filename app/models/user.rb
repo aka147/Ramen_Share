@@ -16,4 +16,5 @@ class User < ApplicationRecord
       # セルフにはカレントユーザーが入る。noodle_idがいいねしようとしているnoodle_idがあるかを判定
     self.favorites.exists?(noodle_id: noodle.id)
     end
+    default_scope -> { order(created_at: :desc) }
 end

@@ -41,12 +41,7 @@
               <div class="content">
                 <div class="content average-score">
                   <div class="star-rating mb-2">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        <%= @noodle.title %>
-                      </p>
-                    </header>
-                    <div class="star-rating-front" style="width: <%= @noodle.review_score_percentage %> %">
+                    <div class="star-rating-front" style="width: <%= @noodle.review_score_percentage %>%">
                       ★★★★★
                     </div>
                     <div class="star-rating-back">
@@ -62,7 +57,7 @@
             <div class="content">
               <table class="table is-narrow">
                 <tr>
-                  <th>特徴</th>
+                  <th>紹介文</th>
                 </tr>
                 <tr>
                   <td><%= simple_format @noodle.body %></td>
