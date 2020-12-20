@@ -16,6 +16,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    if @review.user != current_user
+      redirect_to noodle_reviews_path, alert: "不正なアクセスです。"
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:noodle_id, :score, :content)

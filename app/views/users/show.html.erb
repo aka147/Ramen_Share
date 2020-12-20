@@ -26,12 +26,18 @@
                 </td>
                 <!--ログインしている時だけメールアドレスを表示させる-->
                 <% if @user.id == current_user.id %>
-                
+
                 <td class="is-size-4">
                   <%= @user.email %>
                 </td>
                 <td>
                     <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+                </td>
+                <% end %>
+                <!--もしadminカラムを持っていたらってどうやって書く？-->
+                <% if @user.id == current_user.id %>
+                <td>
+                    <%= link_to "削除", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか?"}, class: "button is-danger" %>
                 </td>
                 <% end %>
               </tr>
@@ -99,7 +105,7 @@
 
         </div>
       </div>
-      <% end %> 
+      <% end %>
     </div>
   </div>
 </section>

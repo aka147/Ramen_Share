@@ -27,6 +27,18 @@ class UsersController < ApplicationController
    end
   end
 
+  # *　管理者ユーザー
+  # def destroy
+  #   user = User.find_by(id: params[:id])
+  #   if @current_user.admin? && !(@current_user == user)
+  #     user.destroy
+  #     flash[:notice] = "ユーザーを削除しました"
+  #   else
+  #     flash[:notice] = "権限がありません"
+  #   end
+  #   redirect_to("/users")
+  # end
+
   private
   def user_params
   params.require(:user).permit(:username, :email, :profile, :profile_image)
