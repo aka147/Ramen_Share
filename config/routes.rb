@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # end
   resources :noodles do
     resource :favorites, only: [:create, :destroy]
-    resources :reviews, only: [:index, :edit, :create]
+    resources :reviews, only: [:index, :edit, :create, :destroy]
   end
 
 end

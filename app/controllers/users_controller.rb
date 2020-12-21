@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+        # この記述ではない？  
+    # @users = User.page(params[:page]).per(PER)
   end
 
   def show
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
   #   else
   #     flash[:notice] = "権限がありません"
   #   end
-  #   redirect_to("/users")
+  #   redirect_to users_path
   # end
 
   private
