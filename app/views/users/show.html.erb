@@ -35,7 +35,7 @@
                 </td>
                 <% end %>
                 <!--もしadminカラムを持っていたらってどうやって書く？-->
-                <% if @user.id == current_user.id %>
+                <% if current_user.admin %>
                 <td>
                     <%= link_to "削除", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか?"}, class: "button is-danger" %>
                 </td>

@@ -3,7 +3,7 @@ class NoodlesController < ApplicationController
   before_action :authenticate_user!, except: [:index], only: [:show]
   PER = 8
   def index
-    @noodles = Noodle.all.order('created_at')
+    @noodles = Noodle.all.order(created_at: :desc).page(params[:page]).per(PER)
     # この記述ではない？
     # @noodles = Noodle.page(params[:page]).per(PER)
 
@@ -51,7 +51,10 @@ class NoodlesController < ApplicationController
 
   def destroy
     noodle = Noodle.find(params[:id])
+    if current_user.admin
     noodle.destroy
+    flash[:notice] = "ラーメンを削除しました"
+    end
     redirect_to noodles_path
   end
 

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   # デバイスに入っているヘルパーメソッド。ログインしていない人のアクションへのアクセスを制限する。 [indexだけ許可という意味！]
   before_action :authenticate_user!, except: [:index]
-
+  PER = 2
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(PER)
         # この記述ではない？  
     # @users = User.page(params[:page]).per(PER)
   end
@@ -29,17 +29,15 @@ class UsersController < ApplicationController
    end
   end
 
-  # *　管理者ユーザー
-  # def destroy
-  #   user = User.find_by(id: params[:id])
-  #   if @current_user.admin? && !(@current_user == user)
-  #     user.destroy
-  #     flash[:notice] = "ユーザーを削除しました"
-  #   else
-  #     flash[:notice] = "権限がありません"
-  #   end
-  #   redirect_to users_path
-  # end
+  # *管理者ユーザー
+  def destroy
+    user = User.find_by(id: params[:id])
+    if current_user.admin
+      user.destroy
+      flash[:notice] = "ユーザーを削除しました"
+    end
+    redirect_to users_path
+  end
 
   private
   def user_params

@@ -1,28 +1,3 @@
-  <div>
-  <%  @favorites_ranks.each.with_index(1) do |noodle, i|%>
-    第
-    <%= i %>
-    位
-    <%= noodle.title %>
-
-  <% end %>
-  </div>
-  <div>
-  <%   @reviews_ranks.each.with_index(1) do |review, i |%>
-    第
-   <%= i %>
-    位
-  <%= review.title %>
-  <% end %>
-  </div>
-  <div>
-  <%   @scores_ranks.each.with_index(1) do |score, i |%>
-    第
-   <%= i %>
-    位
-  <%= score.title %>
-  <% end %>
-  </div>
 <section class="section">
   <article class="media">
     <div class="media-content">
@@ -38,15 +13,343 @@
       <h1 class="has-text-white is-size-2 has-text-weight-bold">ラーメンをシェアしよう！</h1>
       </div>
     </div>
-    </article>
-    <br>
-    <div class="columns is-centered">
-      <div class="column">
-        <figure>
-          <div class="main-image">
+  </article>
+</section>
+
+
+
+  <div>
+    <div>
+    星レビュースコアランキング
+    </div>
+  <%   @scores_ranks.each.with_index(1) do |noodle, i |%>
+    第
+   <%= i %>
+    位
+  <%= noodle.title %>
+  <% end %>
+  </div>
+
+
+<!--星レビュースコアランキング-->
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+     <%  @scores_ranks.each.with_index(1) do |noodle, i|%>
+        <div class="column is-4">
+          <div class="card">
+
+            <header class="card-header">
+                  <p class="card-header-title">
+                  <%= i %>
+                  位
+                  </p>
+                </header>
+            <div class="card-image">
+            <figure class="image is-4by3">
+              <%= link_to noodle_path(noodle) do %>
+              <%= attachment_image_tag noodle, :image %>
+              <% end %>
+            </figure>
+            </div>
+
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <%= link_to user_path(noodle.user.id) do %>
+                    <%= attachment_image_tag noodle.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title">
+                    <%=link_to noodle.user.username, user_path(noodle.user) %>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <div class="title">
+                    <% unless current_user.nil? %>
+                    <% if current_user.already_favorited?(noodle) %>
+                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% else %>
+                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% end %>
+                    <% end %>
+                </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: <%= noodle.review_score_percentage %>%">
+                      ★★★★★
+                    </div>
+                    <div class="star-rating-back">
+                      ★★★★★
+                    </div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                    <%= noodle.avg_score %>点（<%= noodle.reviews.count %>件のレビュー）
+                  </div>
+                </div>
+              </div>
+
+              <div class="content">
+                <time>
+                  <%= noodle.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                </time>更新
+              </div>
+
+              <footer class="card-footer">
+              <%= link_to noodle_reviews_path(noodle), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+              <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
+                レビューを書く
+              <% end %>
+
+            </footer>
+            </div>
 
           </div>
-        </figure>
-      </div>
+        </div>
+
+      <% end %>
+       <!--paginate @noodles -->
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+  <div>
+    <div>
+    いいね数ランキング
+    </div>
+  <%   @favorites_ranks.each.with_index(1) do |noodle, i |%>
+    第
+   <%= i %>
+    位
+  <%= noodle.title %>
+  <% end %>
+  </div>
+  <!--いいねランキング-->
+  <section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+     <%  @favorites_ranks.each.with_index(1) do |noodle, i|%>
+        <div class="column is-4">
+          <div class="card">
+
+            <header class="card-header">
+                  <p class="card-header-title">
+                  <%= i %>
+                  位
+                  </p>
+            </header>
+            <div class="card-image">
+            <figure class="image is-4by3">
+              <%= link_to noodle_path(noodle) do %>
+              <%= attachment_image_tag noodle, :image %>
+              <% end %>
+            </figure>
+            </div>
+
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <%= link_to user_path(noodle.user.id) do %>
+                    <%= attachment_image_tag noodle.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title">
+                    <%=link_to noodle.user.username, user_path(noodle.user) %>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <div class="title">
+                    <% unless current_user.nil? %>
+                    <% if current_user.already_favorited?(noodle) %>
+                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% else %>
+                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% end %>
+                    <% end %>
+                </div>
+                </div>
+              </div>
+              <header class="card-header">
+                <p class="card-header-title">
+                  <%= noodle.title %>
+                </p>
+              </header>
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: <%= noodle.review_score_percentage %>%">
+                      ★★★★★
+                    </div>
+                    <div class="star-rating-back">
+                      ★★★★★
+                    </div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                    <%= noodle.avg_score %>点（<%= noodle.reviews.count %>件のレビュー）
+                  </div>
+                </div>
+              </div>
+
+              <div class="content">
+                <time>
+                  <%= noodle.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                </time>更新
+              </div>
+
+              <footer class="card-footer">
+              <%= link_to noodle_reviews_path(noodle), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+              <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
+                レビューを書く
+              <% end %>
+
+            </footer>
+            </div>
+
+          </div>
+        </div>
+
+      <% end %>
+       <!--paginate @noodles -->
+    </div>
+  </div>
+</section>
+
+
+
+  <div>
+    <div>
+    星レビュー数ランキング
+    </div>
+  <%   @reviews_ranks.each.with_index(1) do |noodle, i |%>
+    第
+   <%= i %>
+    位
+  <%= noodle.title %>
+  <% end %>
+  </div>
+
+
+<!--星レビュー数ランキング-->
+  <section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+     <%  @reviews_ranks.each.with_index(1) do |noodle, i|%>
+        <div class="column is-4">
+          <div class="card">
+
+            <header class="card-header">
+                  <p class="card-header-title">
+                  <%= i %>
+                  位
+                  </p>
+                </header>
+            <div class="card-image">
+            <figure class="image is-4by3">
+              <%= link_to noodle_path(noodle) do %>
+              <%= attachment_image_tag noodle, :image %>
+              <% end %>
+            </figure>
+            </div>
+
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <%= link_to user_path(noodle.user.id) do %>
+                    <%= attachment_image_tag noodle.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title">
+                    <%=link_to noodle.user.username, user_path(noodle.user) %>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <div class="title">
+                    <% unless current_user.nil? %>
+                    <% if current_user.already_favorited?(noodle) %>
+                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% else %>
+                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                    <%= noodle.favorites.count %>
+                    <% end %>
+                    <% end %>
+                </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: <%= noodle.review_score_percentage %>%">
+                      ★★★★★
+                    </div>
+                    <div class="star-rating-back">
+                      ★★★★★
+                    </div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                    <%= noodle.avg_score %>点（<%= noodle.reviews.count %>件のレビュー）
+                  </div>
+                </div>
+              </div>
+
+              <div class="content">
+                <time>
+                  <%= noodle.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                </time>更新
+              </div>
+
+              <footer class="card-footer">
+              <%= link_to noodle_reviews_path(noodle), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+              <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
+                レビューを書く
+              <% end %>
+
+            </footer>
+            </div>
+
+          </div>
+        </div>
+
+      <% end %>
+       <!--paginate @noodles -->
+    </div>
+  </div>
+</section>
+
+

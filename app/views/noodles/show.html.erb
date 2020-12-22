@@ -67,7 +67,7 @@
               <%= link_to "編集画面へ", edit_noodle_path(@noodle), class: "button is-success" %>
               <% end %>
               <!--もしadminカラムを持っていたらってどうやって書く？-->
-              <% if @noodle.user.id == current_user.id %>
+              <% if current_user.admin %>
               <%= link_to "削除する", noodle_path(@noodle), method: :delete, data: { confirm: "本当に削除しますか?"}, class: "button is-danger" %>
               <% end %>
             </div>
