@@ -37,6 +37,8 @@
     <div class="columns is-multiline">
      <%  @scores_ranks.each.with_index(1) do |noodle, i|%>
         <div class="column is-4">
+          <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
+         <%= link_to "ツイッターでシェア！",url %>
           <div class="card">
 
             <header class="card-header">
