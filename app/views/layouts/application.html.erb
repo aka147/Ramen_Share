@@ -41,19 +41,19 @@
     <% if user_signed_in? %>
       <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-item">
-          <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light " %>
+          <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light is-large" %>
         </div>
         <div class="navbar-item">
-          <%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-danger is-light" %>
+          <%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-danger is-light is-large" %>
         </div>
         <div class="navbar-item">
-          <%= link_to "投稿者一覧", users_path, class: "button is-danger is-light" %>
+          <%= link_to "投稿者一覧", users_path, class: "button is-danger is-light is-large" %>
         </div>
         <div class="navbar-item">
-          <%= link_to "マイページ", user_path(current_user), class: "button is-danger is-light" %>
+          <%= link_to "マイページ", user_path(current_user), class: "button is-danger is-light is-large" %>
         </div>
         <div class="navbar-item">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-danger is-light",  data: { confirm: "本当にログアウトしますか?"}%>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-danger is-light is-large",  data: { confirm: "本当にログアウトしますか?"}%>
         </div>
       </div>
       <% else %>
