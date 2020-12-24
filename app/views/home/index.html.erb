@@ -71,22 +71,19 @@
                 </div>
                 <div class="media-right">
                   <div class="title">
-                    <% unless current_user.nil? %>
-                    <% if current_user.already_favorited?(noodle) %>
-                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% else %>
-                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% end %>
-                    <% end %>
+                    <!--ajax-->
+                    <div class="favorite_button_<%= noodle.id %>">
+                    <%= render "favorites/favorite", favorite: @favorite, noodle: noodle %>
+                    </div>
+
                 </div>
                 </div>
               </div>
+                <header class="card-header">
+                    <p class="card-header-title">
+                      <%= noodle.title %>
+                    </p>
+                  </header>
               <div class="content">
                 <div class="content average-score">
                   <div class="star-rating mb-2">
@@ -180,19 +177,10 @@
                 </div>
                 <div class="media-right">
                   <div class="title">
-                    <% unless current_user.nil? %>
-                    <% if current_user.already_favorited?(noodle) %>
-                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% else %>
-                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% end %>
-                    <% end %>
+                    <!--ajax-->
+                    <div class="favorite_button_<%= noodle.id %>">
+                    <%= render "favorites/favorite", favorite: @favorite, noodle: noodle %>
+                  </div>
                 </div>
                 </div>
               </div>
@@ -296,19 +284,11 @@
                 </div>
                 <div class="media-right">
                   <div class="title">
-                    <% unless current_user.nil? %>
-                    <% if current_user.already_favorited?(noodle) %>
-                    <%= link_to noodle_favorites_path(noodle), method: :delete do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% else %>
-                    <%= link_to noodle_favorites_path(noodle), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                    <%= noodle.favorites.count %>
-                    <% end %>
-                    <% end %>
+                    <!--ajax-->
+                    <div class="favorite_button_<%= noodle.id %>">
+                    <%= render "favorites/favorite", favorite: @favorite, noodle: noodle %>
+                    </div>
+
                 </div>
                 </div>
               </div>

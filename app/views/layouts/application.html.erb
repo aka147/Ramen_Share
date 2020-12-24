@@ -86,6 +86,37 @@
         </div>
       <% end %>
 
+      <div id="sp-menu">
+      <h2>MENU</h2>
+      <ul>
+        <li><%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger " %></li>
+        <li><a href="#">MENU2</a></li>
+        <li><a href="#">MENU3</a></li>
+        <li><a href="#">MENU4</a></li>
+        <li><a href="#">MENU5</a></li>
+      </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
+      <script>
+        $(function() {
+          $('.menu-trigger').on('click', function(event) {
+            $(this).toggleClass('active');
+            $('#sp-menu').fadeToggle();
+            event.preventDefault();
+          });
+        });
+      </script>
+
     </nav>
     <%= yield %>
   </body>
