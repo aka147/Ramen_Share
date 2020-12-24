@@ -1,7 +1,7 @@
 class NoodlesController < ApplicationController
   # デバイスに入っているヘルパーメソッド。ログインしていない人のアクションへのアクセスを制限する。 [indexだけ許可という意味！]
   before_action :authenticate_user!, except: [:index], only: [:show]
-  PER = 2
+  PER = 8
   def index
     @noodles = Noodle.all.order(created_at: :desc).page(params[:page]).per(PER)
     # この記述ではない？

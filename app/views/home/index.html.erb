@@ -1,16 +1,24 @@
 <section class="section">
   <article class="media">
     <div class="media-content">
-      <div class="content has-text-centered">
+      <!--<div class="content has-text-centered">-->
+              <div class="column is-one-thirds">
+
+      
         <p>
           <strong class="is-size-1" style="font-family: cursive;">
             ラーメンShare
           </strong>
         </p>
       </div>
-      <div class="container has-text-centered">
-      <h1 class="has-text-white is-size-2 has-text-weight-bold">あなたの好きな</h1>
+      </div>
+      <!--<div class="container has-text-centered">-->
+            <div class="column is-two-thirds">
+                <h1 class="has-text-white is-size-2 has-text-weight-bold">あなたの好きな</h1>
       <h1 class="has-text-white is-size-2 has-text-weight-bold">ラーメンをシェアしよう！</h1>
+        </div>
+      </div>
+
       </div>
     </div>
   </article>
@@ -18,17 +26,6 @@
 
 
 
-  <div>
-    <div>
-    星レビュースコアランキング
-    </div>
-  <%   @scores_ranks.each.with_index(1) do |noodle, i |%>
-    第
-   <%= i %>
-    位
-  <%= noodle.title %>
-  <% end %>
-  </div>
 
 
 <!--星レビュースコアランキング-->
@@ -37,16 +34,23 @@
     <div class="columns is-multiline">
      <%  @scores_ranks.each.with_index(1) do |noodle, i|%>
         <div class="column is-4">
-          <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
-         <%= link_to "ツイッターでシェア！",url %>
+
+
           <div class="card">
 
-            <header class="card-header">
+            <header class="card-left">
                   <p class="card-header-title">
+                    レビュー評価  第  
                   <%= i %>
                   位
                   </p>
-                </header>
+            </header>
+            <header class="card-left">
+              <p class="card-header-title">
+              <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
+              <%= link_to "ツイッターでシェアする",url %>
+              </p>
+            </header>
             <div class="card-image">
             <figure class="image is-4by3">
               <%= link_to noodle_path(noodle) do %>
@@ -128,17 +132,6 @@
 
 
 
-  <div>
-    <div>
-    いいね数ランキング
-    </div>
-  <%   @favorites_ranks.each.with_index(1) do |noodle, i |%>
-    第
-   <%= i %>
-    位
-  <%= noodle.title %>
-  <% end %>
-  </div>
   <!--いいねランキング-->
   <section class="section">
   <div class="container">
@@ -146,13 +139,19 @@
      <%  @favorites_ranks.each.with_index(1) do |noodle, i|%>
         <div class="column is-4">
           <div class="card">
-
-            <header class="card-header">
+          <header class="card-left">
                   <p class="card-header-title">
+                    いいね数  第  
                   <%= i %>
                   位
                   </p>
+            <header class="card-left">
+              <p class="card-header-title">
+              <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
+              <%= link_to "ツイッターでシェアする",url %>
+              </p>
             </header>
+
             <div class="card-image">
             <figure class="image is-4by3">
               <%= link_to noodle_path(noodle) do %>
@@ -233,19 +232,6 @@
 
 
 
-  <div>
-    <div>
-    星レビュー数ランキング
-    </div>
-  <%   @reviews_ranks.each.with_index(1) do |noodle, i |%>
-    第
-   <%= i %>
-    位
-  <%= noodle.title %>
-  <% end %>
-  </div>
-
-
 <!--星レビュー数ランキング-->
   <section class="section">
   <div class="container">
@@ -253,13 +239,20 @@
      <%  @reviews_ranks.each.with_index(1) do |noodle, i|%>
         <div class="column is-4">
           <div class="card">
-
-            <header class="card-header">
+            <header class="card-left">
                   <p class="card-header-title">
+                    レビュー数  第  
                   <%= i %>
                   位
                   </p>
-                </header>
+            </header>
+            <header class="card-left">
+              <p class="card-header-title">
+              <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
+              <%= link_to "ツイッターでシェアする",url %>
+              </p>
+            </header>
+
             <div class="card-image">
             <figure class="image is-4by3">
               <%= link_to noodle_path(noodle) do %>

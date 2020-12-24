@@ -25,10 +25,11 @@
 
 
 
-    <nav class="navbar is-danger">
-      <div class="navbar-brand">
+    <nav class="navbar ">
+      <!--<div class="navbar-brand">-->
+      <div class="hero-body">
         <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-4" style="font-family: cursive;">ラーメンShare</h1>
+          <h1 class="title is-3" style="font-family: cursive;">ラーメンShare</h1>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
@@ -40,63 +41,56 @@
     <% if user_signed_in? %>
       <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-item">
-            <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light" %>
-          </div>
+          <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light " %>
+        </div>
         <div class="navbar-item">
-            <%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-danger is-light" %>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <%= link_to "投稿者一覧", users_path, class: "button is-danger is-light" %>
-                </p>
-                <p class="control">
-                  <%= link_to "マイページ", user_path(current_user), class: "button is-danger is-light" %>
-
-                </p>
-                <p class="control">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-danger is-light",  data: { confirm: "本当にログアウトしますか?"}%>
-                </p>
-              </div>
-            </div>
-          </div>
+          <%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-danger is-light" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "投稿者一覧", users_path, class: "button is-danger is-light" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "マイページ", user_path(current_user), class: "button is-danger is-light" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-danger is-light",  data: { confirm: "本当にログアウトしますか?"}%>
+        </div>
       </div>
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
-            <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light" %>
-            </div>
+            <%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger is-light is-large" %>
+          </div>
           <div class="navbar-item">
-            <%= link_to "投稿者一覧", users_path, class: "navbar-item button is-danger is-light" %>
-            </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-
-                <p class="control">
-                  <%= link_to "ログイン", new_user_session_path, class: "button is-danger is-light" %>
-                </p>
-                <p class="control">
-                  <%= link_to "新規登録", new_user_registration_path, class: "button is-danger is-light"%>
-                </p>
-              </div>
-            </div>
+            <%= link_to "投稿者一覧", users_path, class: "navbar-item button is-danger is-light is-large" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "ログイン", new_user_session_path, class: "button is-danger is-light is-large" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "button is-danger is-light is-large"%>
           </div>
         </div>
       <% end %>
 
-      <div id="sp-menu">
-      <h2>MENU</h2>
+    <div id="sp-menu">
+      <div class="navbar-brand">
+      </div>
       <ul>
+        <% if user_signed_in? %>
         <li><%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger " %></li>
-        <li><a href="#">MENU2</a></li>
-        <li><a href="#">MENU3</a></li>
-        <li><a href="#">MENU4</a></li>
-        <li><a href="#">MENU5</a></li>
+        <li><%= link_to "ラーメン投稿", new_noodle_path, class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "投稿者一覧", users_path, class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "マイページ", user_path(current_user), class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item button is-danger ",  data: { confirm: "本当にログアウトしますか?"}%></li>
+      <% else %>
+        <li><%= link_to "ラーメン一覧", noodles_path, class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "投稿者一覧", users_path, class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "ログイン", new_user_session_path, class: "navbar-item button is-danger " %></li>
+        <li><%= link_to "新規登録", new_user_registration_path, class: "navbar-item button is-danger "%></li>
       </ul>
+      <% end %>
     </div>
-
     <div id="hm-icon">
       <a class="menu-trigger" href="#">
         <span></span>

@@ -12,6 +12,12 @@
       <% @noodles.each do |noodle| %>
         <div class="column is-6">
           <div class="card">
+            <header class="card-left">
+            <p class="card-header-title">
+              <% url = 'https://twitter.com/share?url=http://54.168.154.26/noodles/'+ noodle.id.to_s %>
+              <%= link_to "ツイッターでシェアする",url %>
+            </p>
+            </header>
             <div class="card-image">
             <figure class="image is-4by3">
               <%= link_to noodle_path(noodle) do %>
@@ -40,7 +46,7 @@
                     <div class="favorite_button_<%= noodle.id %>">
                     <%= render "favorites/favorite", favorite: @favorite, noodle: noodle %>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>

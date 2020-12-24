@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # デバイスに入っているヘルパーメソッド。ログインしていない人のアクションへのアクセスを制限する。 [indexだけ許可という意味！]
   before_action :authenticate_user!, except: [:index]
-  PER = 2
+  PER = 12
   def index
     @users = User.all.page(params[:page]).per(PER)
         # この記述ではない？  
