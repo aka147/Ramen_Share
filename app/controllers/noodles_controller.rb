@@ -51,7 +51,7 @@ class NoodlesController < ApplicationController
 
   def destroy
     noodle = Noodle.find(params[:id])
-    if current_user
+    if current_user.admin or current_user
     noodle.destroy
     flash[:notice] = "ラーメンを削除しました"
     end
