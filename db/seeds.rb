@@ -10,3 +10,9 @@ User.create!(username: "あか",
             password: 'akakak',
             password_confirmation: 'akakak' ,
             admin: true)
+
+User.create!(username: "あか２",
+            email: 'ajajtajpgj@gmail.com',
+            password: 'akakak',
+            password_confirmation: 'akakak' ,
+            admin: true)
