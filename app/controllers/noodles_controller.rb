@@ -26,9 +26,10 @@ class NoodlesController < ApplicationController
     # データをデータベースに保存するためのsaveメソッド実行
     if  @noodle.save
     #  トップ画面へリダイレクト
-    tags = Vision.get_image_data(list.image)
+    tags = Vision.get_image_data(@noodle.image)
+   byebug
     tags.each do |tag|
-      list.tags.create(name: tag)
+      @noodle.tags.create(name: tag)
     end
     redirect_to noodle_path(@noodle), notice: "投稿に成功しました。"
     else

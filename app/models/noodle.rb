@@ -10,6 +10,9 @@ class Noodle < ApplicationRecord
   end
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :tags, dependent: :destroy
+  attachment :image
+  
   def avg_score
     unless self.reviews.empty?
       reviews.average(:score).round(1).to_f
