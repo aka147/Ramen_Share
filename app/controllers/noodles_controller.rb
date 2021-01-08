@@ -27,7 +27,6 @@ class NoodlesController < ApplicationController
     if  @noodle.save
     #  トップ画面へリダイレクト
     tags = Vision.get_image_data(@noodle.image)
-   byebug
     tags.each do |tag|
       @noodle.tags.create(name: tag)
     end
