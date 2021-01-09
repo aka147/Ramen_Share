@@ -58,6 +58,9 @@
             </div>
 
             <div class="card-content">
+                <% noodle.tags.each do |tag| %>
+                  <span class="vision"><%= tag.name %></span>
+                <% end %>
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">
@@ -160,6 +163,9 @@
             </div>
 
             <div class="card-content">
+              <% noodle.tags.each do |tag| %>
+                <span class="vision"><%= tag.name %></span>
+              <% end %>
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">
@@ -264,6 +270,9 @@
             </div>
 
             <div class="card-content">
+              <% noodle.tags.each do |tag| %>
+                <span class="vision"><%= tag.name %></span>
+              <% end %>
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">

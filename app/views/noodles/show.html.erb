@@ -32,6 +32,9 @@
               </div>
 
               <div class="content">
+                <% @noodle.tags.each do |tag| %>
+                  <span class="vision"><%= tag.name %></span>
+                <% end %>
                 <div class="content average-score">
                   <div class="star-rating mb-2">
                     <div class="star-rating-front" style="width: <%= @noodle.review_score_percentage %>%">
