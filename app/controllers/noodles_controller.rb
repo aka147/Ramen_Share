@@ -46,6 +46,11 @@ class NoodlesController < ApplicationController
   def update
     @noodle = Noodle.find(params[:id])
     if @noodle.update(noodle_params)
+      tags = Vision.get_image_data(@noodle.image)
+      @noodle.tags.destroy_all
+      tags.each do |tag|
+        @noodle.tags.create(name: tag)
+      end
     redirect_to noodle_path(@noodle),notice: "更新に成功しました。"
     else
       render :edit

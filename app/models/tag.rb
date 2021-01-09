@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-  belongs_to :list
+  belongs_to :noodle
 end
