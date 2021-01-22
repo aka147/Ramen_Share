@@ -30,6 +30,15 @@
 
 <!--星レビュースコアランキング-->
 <section class="section">
+  <div class="column is-5">
+    <table class="table is-fullwidth">
+      <tr>
+        <td>
+          <center><h2 class=" is-size-3 has-text-weight-bold">レビュー評価ランキング</h2></center>
+        </td>
+      </tr>
+    </table>
+  </div>
   <div class="container">
     <div class="columns is-multiline">
      <%  @scores_ranks.each.with_index(1) do |noodle, i|%>
@@ -135,6 +144,15 @@
 
   <!--いいねランキング-->
   <section class="section">
+    <div class="column is-5">
+      <table class="table is-fullwidth">
+        <tr>
+          <td>
+            <center><h2 class=" is-size-3 has-text-weight-bold">いいね数ランキング</h2></center>
+          </td>
+        </tr>
+      </table>
+    </div>
   <div class="container">
     <div class="columns is-multiline">
      <%  @favorites_ranks.each.with_index(1) do |noodle, i|%>
@@ -146,8 +164,8 @@
               <%= link_to url do %>
               <i class="fab fa-twitter-square fa-2x fa-blue"></i>
               <% end %>
-              
-              
+
+
                   いいね数  第
                   <%= i %>
                   位
@@ -239,6 +257,15 @@
 
 <!--星レビュー数ランキング-->
   <section class="section">
+    <div class="column is-5">
+      <table class="table is-fullwidth">
+        <tr>
+          <td>
+            <center><h2 class=" is-size-3 has-text-weight-bold">レビュー数ランキング</h2></center>
+          </td>
+        </tr>
+      </table>
+    </div>
   <div class="container">
     <div class="columns is-multiline">
      <%  @reviews_ranks.each.with_index(1) do |noodle, i|%>
