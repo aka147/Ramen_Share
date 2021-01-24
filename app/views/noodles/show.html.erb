@@ -14,9 +14,11 @@
                 <p class="title is-4"><%= @noodle.title %></p>
               </div>
                 <div class="media-right">
+                  <div class="title">
                     <div class="favorite_button_<%= @noodle.id %>">
                     <%= render "favorites/favorite", favorite: @favorite, noodle: @noodle %>
                     </div>
+                  </div>
                 </div>
               </div>
 

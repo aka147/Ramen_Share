@@ -1,19 +1,19 @@
   <% unless current_user.nil? %>
     <% if current_user.already_favorited?(noodle) %>
-    <!--ajax処理をするためにremote trueを記述-->
-    <!--link_to noodle_favorites_path(noodle), method: :delete remote: true-->
-    <%= link_to noodle_favorites_path(noodle), method: :delete, remote: true do %>
-      <i class="fas fa-heart fa-pink"></i>
-    <% end %>
-    <%= noodle.favorites.count %>
+      <!--ajax処理をするためにremote trueを記述-->
+      <!--link_to noodle_favorites_path(noodle), method: :delete remote: true-->
+      <%= link_to noodle_favorites_path(noodle), method: :delete, remote: true do %>
+        <i class="fas fa-heart fa-pink"></i>
+      <% end %>
+      <%= noodle.favorites.count %>
     <% else %>
-    <!--link_to noodle_favorites_path(noodle), method: :post remote: true-->
-    <%= link_to noodle_favorites_path(noodle), method: :post, remote: true do %>
-      <i class="far fa-heart fa-pink"></i>
+      <!--link_to noodle_favorites_path(noodle), method: :post remote: true-->
+      <%= link_to noodle_favorites_path(noodle), method: :post, remote: true do %>
+        <i class="far fa-heart fa-pink"></i>
+      <% end %>
+      <%= noodle.favorites.count %>
     <% end %>
-    <%= noodle.favorites.count %>
-    <% end %>
-    <% else %>
+  <% else %>
     <i class="far fa-heart fa-pink"></i>
     <%= noodle.favorites.count %>
   <% end %>
