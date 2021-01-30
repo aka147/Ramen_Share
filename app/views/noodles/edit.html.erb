@@ -21,16 +21,20 @@
           <%= f.text_field :title, class: "input" %>
         </div>
         <div class="field">
-          <%= f.label :title, "住所", class: "label"%>
-          <%= f.text_field :title, class: "input" %>
-        </div>
-        <div class="field">
           <%= f.label :body, "紹介文", class: "label"%>
           <%= f.text_area :body, class: "textarea" %>
         </div>
         <div class="field">
           <%= f.label :image, "写真", class: "label"%>
           <%= f.attachment_field :image, class: "input"%>
+        </div>
+        <div class="field">
+          <%= f.label :address, "住所", class: "label" %>
+          <%= f.text_field :address, class: "input" %>
+        </div>
+        <div class="field">
+          <%= f.label :url, "ラーメンサイトURL", class: "label" %>
+          <%= f.text_field :url, class: "input" %>
         </div>
 
           <%= f.submit "更新", class: "button is-success"%>
