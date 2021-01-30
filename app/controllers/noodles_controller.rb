@@ -73,7 +73,7 @@ class NoodlesController < ApplicationController
 
   private
   def noodle_params
-    params.require(:noodle).permit(:title, :body, :image)
+    params.require(:noodle).permit(:title, :body, :image, :address, :url)
   end
 
 end
