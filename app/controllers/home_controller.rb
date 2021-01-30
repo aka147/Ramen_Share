@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     noodles = Noodle.all
     h = {}
     noodles.map{|v| h[v.avg_score] = v}
+    # トップページに上位3件のみ表示させるため配列の前から三つだけ取得
     @scores_ranks = h.sort.reverse.map{|v| v[1]}[0..2]
   end
 end

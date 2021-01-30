@@ -25,7 +25,7 @@ class NoodlesController < ApplicationController
     @noodle.user_id = current_user.id
     # データをデータベースに保存するためのsaveメソッド実行
     if  @noodle.save
-    #  トップ画面へリダイレクト
+    #  タグを取得
     tags = Vision.get_image_data(@noodle.image)
     tags.each do |tag|
       @noodle.tags.create(name: tag)
