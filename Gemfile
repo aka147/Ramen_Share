@@ -74,4 +74,4 @@ group :production do
 end
 # ajax導入のため
 gem 'jquery-rails'
-gem 'kaminari'
+gem 'kaminari', '~> 1.0.0'
