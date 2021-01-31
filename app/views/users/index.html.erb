@@ -1,6 +1,6 @@
-
 <section class="section">
   <div class="container">
+    <%= paginate @users %>
     <div class="columns is-multiline margin-bottom-5">
       <% @users.each do |user| %>
         <div class="column is-6-mobile is-6-tablet is-3-desktop">
@@ -29,7 +29,6 @@
         </div>
 
       <% end %>
-      <%= paginate @users %>
     </div>
   </div>
 </section>
