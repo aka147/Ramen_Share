@@ -40,7 +40,7 @@
     </table>
   </div>
   <div class="container">
-    <div class="columns is-mobile is-desktop is-multiline">
+    <div class="columns is-multiline">
      <%  @scores_ranks.each.with_index(1) do |noodle, i|%>
         <div class="column is-12-mobile is-12-tablet is-4-desktop">
 
@@ -156,7 +156,7 @@
   <div class="container">
     <div class="columns is-multiline">
      <%  @favorites_ranks.each.with_index(1) do |noodle, i|%>
-        <div class="column is-4">
+        <div class="column is-12-mobile is-12-tablet is-4-desktop">
           <div class="card">
             <header class="card-left">
               <p class="card-header-title">
@@ -269,7 +269,7 @@
   <div class="container">
     <div class="columns is-multiline">
      <%  @reviews_ranks.each.with_index(1) do |noodle, i|%>
-        <div class="column is-4">
+        <div class="column is-12-mobile is-12-tablet is-4-desktop">
           <div class="card">
             <header class="card-left">
               <p class="card-header-title">
