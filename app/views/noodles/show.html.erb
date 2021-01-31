@@ -65,7 +65,7 @@
 
 
       <div class="column is-12-mobile is-12-tablet is-4-desktop">
-        <article class="panel is-link">
+        <article class="panel is-danger">
             <p class="panel-heading">
             By <%= @noodle.user.username %>
             </p>
@@ -84,7 +84,7 @@
         <%= render 'reviews/form', review: @review, noodle: @noodle %>
 
 
-<% if  %>
+
 <div id="map_info">
   <p id="venue"><%= @noodle.title %></p>
   <p id="address"><%= @noodle.address %></p>
@@ -94,7 +94,7 @@
 <div id="map_container">
   <div id="map_canvas"></div>
 </div>
-<% end %>
+
 
 <script>
 function initMap() {
