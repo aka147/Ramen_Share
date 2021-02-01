@@ -85,72 +85,74 @@
 
 
 
-<div id="map_info">
-  <p id="venue"><%= @noodle.title %></p>
-  <p id="address"><%= @noodle.address %></p>
-  <p id="url"><a href="<%= @noodle.url %>" target="_blank"></a></p>
-  <p id="zoom">17</p>
-</div>
-<div id="map_container">
-  <div id="map_canvas"></div>
-</div>
+        <div id="map_info">
+          <p id="venue"><%= @noodle.title %></p>
+          <p id="address"><%= @noodle.address %></p>
+          
+          <p><a href="<%= @noodle.url %>" target="_blank"><%= @noodle.url %></a></p>
+          <p id="url"><a href="<%= @noodle.url %>" target="_blank"></a></p>
+          <p id="zoom">17</p>
+        </div>
+        <div id="map_container">
+          <div id="map_canvas"></div>
+        </div>
 
 
-<script>
-function initMap() {
-  jQuery(function($){
-    var map, map_center;
-    var zoom = $("#zoom").text() ?  parseInt($("#zoom").text()): 16;
-    var title = $('#venue').text();
+        <script>
+        function initMap() {
+          jQuery(function($){
+            var map, map_center;
+            var zoom = $("#zoom").text() ?  parseInt($("#zoom").text()): 16;
+            var title = $('#venue').text();
 
-    var opts = {
-      zoom: zoom,
-      mapTypeId: "roadmap"
-    };
+            var opts = {
+              zoom: zoom,
+              mapTypeId: "roadmap"
+            };
 
-    map = new google.maps.Map(document.getElementById("map_canvas"), opts);
+            map = new google.maps.Map(document.getElementById("map_canvas"), opts);
 
-    var geocoder = new google.maps.Geocoder();
+            var geocoder = new google.maps.Geocoder();
 
-    var address = $('#address').text();
-    var my_reg = /〒\s?\d{3}(-|ー)\d{4}/;
-    address = address.replace(my_reg, '');
+            var address = $('#address').text();
+            var my_reg = /〒\s?\d{3}(-|ー)\d{4}/;
+            address = address.replace(my_reg, '');
 
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status === 'OK' && results[0]) {
-        map_center = results[0].geometry.location;
-        map.setCenter(map_center);
-        var marker = new google.maps.Marker({
-          map: map,
-          position: map_center,
-          animation: google.maps.Animation.DROP,
-          title: title
-        });
+            geocoder.geocode( { 'address': address}, function(results, status) {
+              if (status === 'OK' && results[0]) {
+                map_center = results[0].geometry.location;
+                map.setCenter(map_center);
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: map_center,
+                  animation: google.maps.Animation.DROP,
+                  title: title
+                });
 
-        var url = $("#url a").attr('href');
-        var content;
-        if (url) {
-          content = '<div id="map_content"><p><a href="' + url + '" target="_blank"> ' + title + '</a><br />' + address + '</p></div>';
-        }else {
-          content = '<div id="map_content"><p>' + title + '<br />' + address + '</p></div>';
+                var url = $("#url a").attr('href');
+                var content;
+                if (url) {
+                  content = '<div id="map_content"><p><a href="' + url + '" target="_blank"> ' + title + '</a><br />' + address + '</p></div>';
+                }else {
+                  content = '<div id="map_content"><p>' + title + '<br />' + address + '</p></div>';
+                }
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: content,
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                  infowindow.open(map, marker);
+                });
+              }
+              // else {
+              //   alert("住所から位置の取得ができませんでした。: " + status);
+              // }
+            });
+          });
         }
-
-        var infowindow = new google.maps.InfoWindow({
-          content: content,
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map, marker);
-        });
-      }
-      // else {
-      //   alert("住所から位置の取得ができませんでした。: " + status);
-      // }
-    });
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap" async defer></script>
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap" async defer></script>
 
 
       </div>
