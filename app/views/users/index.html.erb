@@ -10,7 +10,7 @@
                 <figure class="image ">
                  <!--画像をリンクにしたい場合はdoを使ってdoとendで挟む-->
                   <%= link_to user_path(user) do %>
-                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
+                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg" %>
                   <% end %>
                 </figure>
               </div>
