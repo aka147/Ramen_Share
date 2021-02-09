@@ -4,8 +4,6 @@ class NoodlesController < ApplicationController
   PER = 8
   def index
     @noodles = Noodle.all.order(created_at: :desc).page(params[:page]).per(PER)
-    # この記述ではない？
-    # @noodles = Noodle.page(params[:page]).per(PER)
 
   end
 

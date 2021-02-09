@@ -50,10 +50,9 @@
                   <td><%= simple_format @noodle.body %></td>
                 </tr>
               </table>
-              <% if @noodle.user.id == current_user.id %>
+              <% unless @noodle.user.id == current_user.id %>
               <%= link_to "編集画面へ", edit_noodle_path(@noodle), class: "button is-success" %>
               <% end %>
-              <!--もしadminカラムを持っていたらってどうやって書く？-->
               <% if current_user.admin %>
               <%= link_to "削除する", noodle_path(@noodle), method: :delete, data: { confirm: "本当に削除しますか?"}, class: "button is-danger" %>
               <% end %>
@@ -88,7 +87,7 @@
         <div id="map_info">
           <p id="venue"><%= @noodle.title %></p>
           <p id="address"><%= @noodle.address %></p>
-          
+
           <p><a href="<%= @noodle.url %>" target="_blank"><%= @noodle.url %></a></p>
           <p id="url"><a href="<%= @noodle.url %>" target="_blank"></a></p>
           <p id="zoom">17</p>
