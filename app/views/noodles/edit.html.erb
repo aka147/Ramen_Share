@@ -1,7 +1,6 @@
 
 <% if @noodle.errors.any? %>
 <div class="notification is-danger">
-  <!--pluralizeは英語の単数形や複数形を判定してくれるもの-->
   <h2><%= pluralize(@noodle.errors.count, "error") %>prohibited this object from being saved: not successfully</h2>
   <ul>
     <% @noodle.errors.full_messages.each do |message|%>
@@ -36,9 +35,7 @@
           <%= f.label :url, "ラーメンサイトURL", class: "label" %>
           <%= f.text_field :url, class: "input" %>
         </div>
-
           <%= f.submit "更新", class: "button is-success"%>
-
           <% end %>
       </div>
     </div>

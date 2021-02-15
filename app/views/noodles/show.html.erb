@@ -110,13 +110,10 @@
             };
 
             map = new google.maps.Map(document.getElementById("map_canvas"), opts);
-
             var geocoder = new google.maps.Geocoder();
-
             var address = $('#address').text();
             var my_reg = /〒\s?\d{3}(-|ー)\d{4}/;
             address = address.replace(my_reg, '');
-
             geocoder.geocode( { 'address': address}, function(results, status) {
               if (status === 'OK' && results[0]) {
                 map_center = results[0].geometry.location;
@@ -144,16 +141,11 @@
                   infowindow.open(map, marker);
                 });
               }
-              // else {
-              //   alert("住所から位置の取得ができませんでした。: " + status);
-              // }
             });
           });
         }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap" async defer></script>
-
-
       </div>
     </div>
   </div>

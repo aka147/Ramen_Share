@@ -1,7 +1,6 @@
 <section class="section">
   <article class="media">
     <div class="media-content">
-      <!--<div class="content has-text-centered">-->
               <div class="column is-one-thirds">
 
 
@@ -12,7 +11,6 @@
         </p>
       </div>
       </div>
-      <!--<div class="container has-text-centered">-->
             <div class="column is-two-thirds">
                 <h1 class="has-text-white is-size-2 has-text-weight-bold">あなたの好きな</h1>
       <h1 class="has-text-white is-size-2 has-text-weight-bold">ラーメンをシェアしよう！</h1>
@@ -131,15 +129,11 @@
               <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
                 レビューを書く
               <% end %>
-
             </footer>
             </div>
-
           </div>
         </div>
-
       <% end %>
-       <!--paginate @noodles -->
     </div>
   </div>
 </section>
@@ -244,15 +238,11 @@
               <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
                 レビューを書く
               <% end %>
-
             </footer>
             </div>
-
           </div>
         </div>
-
       <% end %>
-       <!--paginate @noodles -->
     </div>
   </div>
 </section>
@@ -286,11 +276,6 @@
                   位
               </p>
             </header>
-            <!--<header class="card-left">-->
-            <!--  <p class="card-header-title">-->
-
-            <!--  </p>-->
-            <!--</header>-->
 
             <div class="card-image">
             <figure class="image is-4by3">
@@ -319,7 +304,6 @@
                 </div>
                 <div class="media-right">
                   <div class="title">
-                    <!--ajax-->
                     <div class="favorite_button_<%= noodle.id %>">
                     <%= render "favorites/favorite", favorite: @favorite, noodle: noodle %>
                     </div>
@@ -356,13 +340,10 @@
               <%= link_to noodle_path(noodle), class: "button card-footer-item" do %>
                 レビューを書く
               <% end %>
-
             </footer>
             </div>
-
           </div>
         </div>
-
       <% end %>
     </div>
   </div>
